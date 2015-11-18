@@ -1,4 +1,6 @@
-;;; marpa-mode.el --- Major mode for editing Marpa BNF files.
+;;; marpa-mode.el --- Major mode for editing Marpa grammar files.
+
+;; Time-stamp: <2015-11-18 16:49:18 szi>
 ;;
 ;; Copyright (C) 2015  Sascha Ziemann
 ;;
@@ -14,9 +16,20 @@
 ;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-;;
+
 ;;; Commentary:
+
+;; This is an Emacs major mode for editing Marpa grammar files.
 ;;
+;; Installation:
+;;
+;; Place this file somewhere in Emacs `load-path' and add the
+;; following line to your Emacs initialization file:
+;;
+;;     (require 'marpa-mode)
+;;
+;; This mode adds `*.marpa' files to the `auto-mode-alist'.
+
 ;;; Code:
 
 (defvar marpa-mode-syntax-table
