@@ -3,6 +3,8 @@
 
 This is an Emacs major mode for editing Marpa grammar files.
 
+See URL http://search.cpan.org/~jkegl/Marpa-R2-3.000000/pod/Scanless/DSL.pod
+
 ## Installation
 
 Place this file somewhere in Emacs `load-path` and add the

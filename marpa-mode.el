@@ -1,6 +1,6 @@
 ;;; marpa-mode.el --- Major mode for editing Marpa grammar files.
 
-;; Time-stamp: <2015-11-18 16:49:18 szi>
+;; Time-stamp: <2015-11-18 17:12:03 szi>
 ;;
 ;; Copyright (C) 2015  Sascha Ziemann
 ;;
@@ -20,6 +20,8 @@
 ;;; Commentary:
 
 ;; This is an Emacs major mode for editing Marpa grammar files.
+;;
+;; See URL http://search.cpan.org/~jkegl/Marpa-R2-3.000000/pod/Scanless/DSL.pod
 ;;
 ;; Installation:
 ;;
