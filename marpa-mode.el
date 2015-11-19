@@ -1,6 +1,6 @@
 ;;; marpa-mode.el --- Major mode for editing Marpa grammar files.
 
-;; Time-stamp: <2015-11-18 17:12:03 szi>
+;; Time-stamp: <2015-11-19 10:50:40 szi>
 ;;
 ;; Copyright (C) 2015  Sascha Ziemann
 ;;
@@ -60,7 +60,15 @@
      (1 font-lock-function-name-face))
     ("\\(\\sw+\\)\\s-*~"
      (1 font-lock-type-face))
-    (,(regexp-opt '(":i" "action" "lexeme" "default" "latm" "separator"))
+    (,(regexp-opt '(;; string suffix
+                    ":i"
+                    ;; Adverbs
+                    "action" "assoc" "bless" "event" "forgiving" "latm"
+                    "name" "null-ranking" "pause" "priority"  "proper"
+                    "rank" "separator"
+                    ;; Statements
+                    "discard" "lexeme" "default" "inaccessible"
+                    ))
      (0 font-lock-keyword-face)))
   "Highlighting used in `marpa-mode'.")
 
