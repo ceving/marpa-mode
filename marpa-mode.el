@@ -1,6 +1,6 @@
 ;;; marpa-mode.el --- Major mode for editing Marpa grammar files.
 
-;; Time-stamp: <2015-11-20 16:14:37 szi>
+;; Time-stamp: <2015-11-20 16:33:31 szi>
 ;;
 ;; Copyright (C) 2015  Sascha Ziemann
 ;;
@@ -52,6 +52,9 @@
     (modify-syntax-entry ?< "w" table)
     (modify-syntax-entry ?> "w" table)
     (modify-syntax-entry ?: "w" table)
+    ;; shell like comments
+    (modify-syntax-entry ?# "<" table)
+    (modify-syntax-entry ?\n ">" table)
     table)
   "Syntax table used in `marpa-mode'.")
 
@@ -111,9 +114,8 @@
            (indent-line-to 2))
           ((looking-at "^[ \t]*||[ \t]*")
            (indent-line-to 1))
-          ((looking-at "^[ \t]*$")
-           ;; do nothing
-           )
+          ((looking-at "^[ \t]*$")) ;; empty line
+          ((looking-at "^[ \t]*\\s<")) ;; comment
           (t (indent-line-to 4)))))
 
 (defun marpa-mode ()
