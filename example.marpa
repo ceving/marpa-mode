@@ -1,37 +1,60 @@
+# Time-stamp: <2015-11-20 16:40:20 szi>
+
 :default ::= action => [name,values]
 lexeme default = latm => 1
 
+:start ::= ddl
+
 ddl ::=
+    statement+
+
+statement ::=
     create_table
-  | create_table ddl
 
 create_table ::=
-    CREATE TABLE identifier '(' column_list ')' ';'
+    CREATE TABLE identifier '(' table_elements ')' ';'
 
-column_list ::=
-    column+ separator => comma
+table_elements ::=
+    table_element+ separator => comma
 
-column ::=
-    identifier type
-  | identifier type column_constrain
+table_element ::=
+    column_definition
+#  | table_constraint_definition
 
-column_constrain ::=
-    PRIMARY KEY
+column_definition ::=
+    column_name data_type column_constraint
 
-type ::=
+column_name ::=
+    identifier
+
+column_constraint ::=
+
+column_constraint ::=
+    NOT NULL
+  | UNIQUE
+  | PRIMARY KEY
+#  | REFERENCES <referenced table and columns> [ MATCH <match type> ] [ <referential triggered action> ]
+
+data_type ::=
     INTEGER
   | TEXT
+
+data_type ::=
 
 identifier ::=
     delimited_identifier
   | limited_identifier
 
-CREATE  ~ 'create':i
-INTEGER ~ 'integer':i
-KEY     ~ 'key':i
-PRIMARY ~ 'primary':i
-TABLE   ~ 'table':i
-TEXT    ~ 'text':i
+CREATE     ~ 'create':i
+INTEGER    ~ 'integer':i
+KEY        ~ 'key':i
+NOT        ~ 'not':i
+NULL       ~ 'null':i
+PRIMARY    ~ 'primary':i
+#REFERENCES ~ 'references':i
+TABLE      ~ 'table':i
+TEXT       ~ 'text':i
+UNIQUE     ~ 'unique':i
 
 comma                     ~ [,]
 double_quote              ~ ["]
