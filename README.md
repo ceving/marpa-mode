@@ -3,7 +3,11 @@
 
 This is an Emacs major mode for editing Marpa grammar files.
 
-See URL http://search.cpan.org/~jkegl/Marpa-R2-3.000000/pod/Scanless/DSL.pod
+http://search.cpan.org/~jkegl/Marpa-R2-3.000000/pod/Scanless/DSL.pod
+
+This is how it looks like.
+
+https://ceving.github.io/marpa-mode/example.marpa.html
 
 ## Installation
 
