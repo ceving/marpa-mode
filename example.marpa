@@ -1,0 +1,46 @@
+:default ::= action => [name,values]
+lexeme default = latm => 1
+
+ddl ::=
+    create_table
+  | create_table ddl
+
+create_table ::=
+    CREATE TABLE identifier '(' column_list ')' ';'
+
+column_list ::=
+    column+ separator => comma
+
+column ::=
+    identifier type
+  | identifier type column_constrain
+
+column_constrain ::=
+    PRIMARY KEY
+
+type ::=
+    INTEGER
+  | TEXT
+
+identifier ::=
+    delimited_identifier
+  | limited_identifier
+
+CREATE  ~ 'create':i
+INTEGER ~ 'integer':i
+KEY     ~ 'key':i
+PRIMARY ~ 'primary':i
+TABLE   ~ 'table':i
+TEXT    ~ 'text':i
+
+comma                     ~ [,]
+double_quote              ~ ["]
+non_double_quotes         ~ [^"]+
+limited_identifier_start  ~ [a-zA-Z_]
+limited_identifier_extend ~ [a-zA-Z0-9_]*
+
+delimited_identifier ~ double_quote non_double_quotes double_quote
+limited_identifier   ~ limited_identifier_start limited_identifier_extend
+
+:discard ~ whitespace
+whitespace ~ [\s]+
