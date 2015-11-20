@@ -1,6 +1,6 @@
 ;;; marpa-mode.el --- Major mode for editing Marpa grammar files.
 
-;; Time-stamp: <2015-11-20 09:37:36 szi>
+;; Time-stamp: <2015-11-20 11:48:55 szi>
 ;;
 ;; Copyright (C) 2015  Sascha Ziemann
 ;;
@@ -58,7 +58,7 @@
 (defvar marpa-mode-font-lock
   `(("\\(\\[[^]]*]\\)"
      (1 font-lock-variable-name-face))
-    (,(regexp-opt '(":default" ":discard"))
+    (,(regexp-opt '(":default" ":discard" ":lexeme" ":start"))
      (0 font-lock-builtin-face))
     ("\\(\\sw+\\)\\s-*::="
      (1 font-lock-function-name-face))
