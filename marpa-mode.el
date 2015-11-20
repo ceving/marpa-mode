@@ -1,6 +1,6 @@
 ;;; marpa-mode.el --- Major mode for editing Marpa grammar files.
 
-;; Time-stamp: <2015-11-20 14:07:17 szi>
+;; Time-stamp: <2015-11-20 16:14:37 szi>
 ;;
 ;; Copyright (C) 2015  Sascha Ziemann
 ;;
@@ -60,9 +60,9 @@
      (1 font-lock-variable-name-face))
     (,(regexp-opt '(":default" ":discard" ":lexeme" ":start"))
      (0 font-lock-builtin-face))
-    ("\\(\\sw+\\)\\s-*::="
+    ("^[ \t]*\\(\\sw+\\)[ \t]*::="
      (1 font-lock-function-name-face))
-    ("\\(\\sw+\\)\\s-*~"
+    ("^[ \t]*\\(\\sw+\\)[ \t]*~"
      (1 font-lock-type-face))
     (, (concat "\\<"
                (regexp-opt '(;; string suffix
@@ -80,17 +80,41 @@
 
 (defvar marpa-mode-hook nil)
 
+(defun marpa-mode-tilde-column (&optional regex)
+  (if (or (not regex)
+          (looking-at regex))
+      (- (match-beginning 1) (point))
+    0))
+
 (defun marpa-mode-indent-line ()
   "Indent current line in `marpa-mode'."
   (interactive)
-  (beginning-of-line)
-  (cond ((looking-at "^\\s-*\\sw+\\s-*\\(?:::=\\|~\\)\\|lexeme")
-         (indent-line-to 0))
-        ((looking-at "^\\s-*|\\s-*")
-         (indent-line-to 2))
-        ((looking-at "^[ \t]*||\\s-*")
-         (indent-line-to 1))
-        (t (indent-line-to 4))))
+  (save-excursion
+    (beginning-of-line)
+    (cond ((looking-at "^[ \t]*\\sw+[ \t]*\\(::=\\|~\\)\\|lexeme")
+           (if (equal "~" (match-string-no-properties 1))
+               (let ((col (marpa-mode-tilde-column))
+                     (tre "^[ \t]*\\sw+[ \t]*\\(~\\)")
+                     (c-1 0)
+                     (c+1 0))
+                 (save-excursion
+                   (forward-line)
+                   (setq c+1 (marpa-mode-tilde-column tre)))
+                 (save-excursion
+                   (forward-line -1)
+                   (setq c-1 (marpa-mode-tilde-column tre)))
+                 (let ((ind (max 0 (- c-1 col) (- c+1 col))))
+                   (goto-char (+ (point) col))
+                   (dotimes (i ind)  (insert " ")))))
+           (indent-line-to 0))
+          ((looking-at "^[ \t]*|[ \t]*")
+           (indent-line-to 2))
+          ((looking-at "^[ \t]*||[ \t]*")
+           (indent-line-to 1))
+          ((looking-at "^[ \t]*$")
+           ;; do nothing
+           )
+          (t (indent-line-to 4)))))
 
 (defun marpa-mode ()
   "Major mode for editing Marpa BNF files."
@@ -107,3 +131,6 @@
 (add-to-list 'auto-mode-alist '("\\.marpa\\'" . marpa-mode))
 
 (provide 'marpa-mode)
+
+;; Debug stuff
+;; (defun dump (&rest args) (message (prin1-to-string args)))
