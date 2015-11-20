@@ -1,91 +1,189 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<!-- Created by htmlize-1.36 in css mode. -->
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>example.marpa</title>
-    <style type="text/css">
-    <!--
-      body {
-        color: #000000;
-        background-color: #ffffff;
-      }
-      .builtin {
-        /* font-lock-builtin-face */
-        color: #483d8b;
-      }
-      .function-name {
-        /* font-lock-function-name-face */
-        color: #0000ff;
-      }
-      .keyword {
-        /* font-lock-keyword-face */
-        color: #a020f0;
-      }
-      .string {
-        /* font-lock-string-face */
-        color: #8b2252;
-      }
-      .type {
-        /* font-lock-type-face */
-        color: #228b22;
-      }
-      .variable-name {
-        /* font-lock-variable-name-face */
-        color: #a0522d;
-      }
+<meta name="generator" content="emacs 24.4.1; htmlfontify 0.21" />
+<style type="text/css"><!-- 
+body { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.default   { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.default a { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.type   { color: #228b22;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.type a { color: #228b22;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.string   { color: #8b2252;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.string a { color: #8b2252;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.function-name   { color: #0000ff;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.function-name a { color: #0000ff;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.variable-name   { color: #a0522d;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.variable-name a { color: #a0522d;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.keyword   { color: #a020f0;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.keyword a { color: #a020f0;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.builtin   { color: #483d8b;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.builtin a { color: #483d8b;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+span.comment   { color: #b22222;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
+span.comment a { color: #b22222;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+ --></style>
 
-      a {
-        color: inherit;
-        background-color: inherit;
-        font: inherit;
-        text-decoration: inherit;
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
       }
-      a:hover {
-        text-decoration: underline;
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use the them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
       }
-    -->
-    </style>
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
   </head>
-  <body>
-    <pre>
+  <body onload="stripe('index'); return true;">
+
+<pre><span class="comment"># Time-stamp: &lt;2015-11-20 16:40:20 szi&gt;
+</span>
 <span class="builtin">:default</span> ::= <span class="keyword">action</span> =&gt; <span class="variable-name">[name,values]</span>
 <span class="keyword">lexeme</span> <span class="keyword">default</span> = <span class="keyword">latm</span> =&gt; 1
 
+<span class="builtin">:start</span> ::= ddl
+
 <span class="function-name">ddl</span> ::=
+    statement+
+
+<span class="function-name">statement</span> ::=
     create_table
-  | create_table ddl
 
 <span class="function-name">create_table</span> ::=
-    CREATE TABLE identifier <span class="string">'('</span> column_list <span class="string">')'</span> <span class="string">';'</span>
+    CREATE TABLE identifier <span class="string">'('</span> table_elements <span class="string">')'</span> <span class="string">';'</span>
 
-<span class="function-name">column_list</span> ::=
-    column+ <span class="keyword">separator</span> =&gt; comma
+<span class="function-name">table_elements</span> ::=
+    table_element+ <span class="keyword">separator</span> =&gt; comma
 
-<span class="function-name">column</span> ::=
-    identifier type
-  | identifier type column_constrain
+<span class="function-name">table_element</span> ::=
+    column_definition
+<span class="comment">#  | table_constraint_definition
+</span>
+<span class="function-name">column_definition</span> ::=
+    column_name data_type column_constraint
 
-<span class="function-name">column_constrain</span> ::=
-    PRIMARY KEY
+<span class="function-name">column_name</span> ::=
+    identifier
 
-<span class="function-name">type</span> ::=
+<span class="function-name">column_constraint</span> ::=
+
+<span class="function-name">column_constraint</span> ::=
+    NOT NULL
+  | UNIQUE
+  | PRIMARY KEY
+<span class="comment">#  | REFERENCES &lt;referenced table and columns&gt; [ MATCH &lt;match type&gt; ] [ &lt;referential triggered action&gt; ]
+</span>
+<span class="function-name">data_type</span> ::=
     INTEGER
   | TEXT
+
+<span class="function-name">data_type</span> ::=
 
 <span class="function-name">identifier</span> ::=
     delimited_identifier
   | limited_identifier
 
-<span class="type">CREATE</span>  ~ <span class="string">'create'</span><span class="keyword">:i</span>
-<span class="type">INTEGER</span> ~ <span class="string">'integer'</span><span class="keyword">:i</span>
-<span class="type">KEY</span>     ~ <span class="string">'key'</span><span class="keyword">:i</span>
-<span class="type">PRIMARY</span> ~ <span class="string">'primary'</span><span class="keyword">:i</span>
-<span class="type">TABLE</span>   ~ <span class="string">'table'</span><span class="keyword">:i</span>
-<span class="type">TEXT</span>    ~ <span class="string">'text'</span><span class="keyword">:i</span>
+<span class="type">CREATE</span>     ~ <span class="string">'create'</span><span class="keyword">:i</span>
+<span class="type">INTEGER</span>    ~ <span class="string">'integer'</span><span class="keyword">:i</span>
+<span class="type">KEY</span>        ~ <span class="string">'key'</span><span class="keyword">:i</span>
+<span class="type">NOT</span>        ~ <span class="string">'not'</span><span class="keyword">:i</span>
+<span class="type">NULL</span>       ~ <span class="string">'null'</span><span class="keyword">:i</span>
+<span class="type">PRIMARY</span>    ~ <span class="string">'primary'</span><span class="keyword">:i</span>
+<span class="comment">#REFERENCES ~ 'references':i
+</span><span class="type">TABLE</span>      ~ <span class="string">'table'</span><span class="keyword">:i</span>
+<span class="type">TEXT</span>       ~ <span class="string">'text'</span><span class="keyword">:i</span>
+<span class="type">UNIQUE</span>     ~ <span class="string">'unique'</span><span class="keyword">:i</span>
 
 <span class="type">comma</span>                     ~ <span class="variable-name">[,]</span>
-<span class="type">double_quote</span>              ~ <span class="variable-name">["]</span>
-<span class="type">non_double_quotes</span>         ~ <span class="variable-name">[^"]</span>+
+<span class="type">double_quote</span>              ~ <span class="variable-name">[&quot;]</span>
+<span class="type">non_double_quotes</span>         ~ <span class="variable-name">[^&quot;]</span>+
 <span class="type">limited_identifier_start</span>  ~ <span class="variable-name">[a-zA-Z_]</span>
 <span class="type">limited_identifier_extend</span> ~ <span class="variable-name">[a-zA-Z0-9_]</span>*
 
@@ -95,5 +193,6 @@
 <span class="builtin">:discard</span> ~ whitespace
 <span class="type">whitespace</span> ~ <span class="variable-name">[\s]</span>+
 </pre>
-  </body>
+
+ </body>
 </html>
