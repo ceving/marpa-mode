@@ -6,23 +6,23 @@
     <title>example.marpa</title>
 <meta name="generator" content="emacs 24.4.1; htmlfontify 0.21" />
 <style type="text/css"><!-- 
-body { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.default   { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.default a { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
-span.type   { color: #228b22;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.type a { color: #228b22;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
-span.string   { color: #8b2252;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.string a { color: #8b2252;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
-span.function-name   { color: #0000ff;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.function-name a { color: #0000ff;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
-span.variable-name   { color: #a0522d;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.variable-name a { color: #a0522d;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
-span.keyword   { color: #a020f0;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.keyword a { color: #a020f0;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
-span.builtin   { color: #483d8b;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.builtin a { color: #483d8b;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
-span.comment   { color: #b22222;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: none; }
-span.comment a { color: #b22222;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  font-size: 14pt;  text-decoration: underline; }
+body { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  text-decoration: none; }
+span.default   { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  text-decoration: none; }
+span.default a { font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  color: #000000;  background: #ffffff;  text-decoration: underline; }
+span.type   { color: #228b22;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: none; }
+span.type a { color: #228b22;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: underline; }
+span.string   { color: #8b2252;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: none; }
+span.string a { color: #8b2252;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: underline; }
+span.function-name   { color: #0000ff;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: none; }
+span.function-name a { color: #0000ff;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: underline; }
+span.variable-name   { color: #a0522d;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: none; }
+span.variable-name a { color: #a0522d;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: underline; }
+span.keyword   { color: #a020f0;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: none; }
+span.keyword a { color: #a020f0;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: underline; }
+span.builtin   { color: #483d8b;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: none; }
+span.builtin a { color: #483d8b;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: underline; }
+span.comment   { color: #b22222;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: none; }
+span.comment a { color: #b22222;  font-family: Lucida Console;  font-stretch: semi-condensed;  font-weight: 500;  font-style: normal;  background: #ffffff;  text-decoration: underline; }
  --></style>
 
     <script type="text/javascript"><!--
