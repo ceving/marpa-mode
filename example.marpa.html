@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.36 in css mode. -->
+<html>
+  <head>
+    <title>example.marpa</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #000000;
+        background-color: #ffffff;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #483d8b;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #0000ff;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #a020f0;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #8b2252;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #228b22;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #a0522d;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="builtin">:default</span> ::= <span class="keyword">action</span> =&gt; <span class="variable-name">[name,values]</span>
+<span class="keyword">lexeme</span> <span class="keyword">default</span> = <span class="keyword">latm</span> =&gt; 1
+
+<span class="function-name">ddl</span> ::=
+    create_table
+  | create_table ddl
+
+<span class="function-name">create_table</span> ::=
+    CREATE TABLE identifier <span class="string">'('</span> column_list <span class="string">')'</span> <span class="string">';'</span>
+
+<span class="function-name">column_list</span> ::=
+    column+ <span class="keyword">separator</span> =&gt; comma
+
+<span class="function-name">column</span> ::=
+    identifier type
+  | identifier type column_constrain
+
+<span class="function-name">column_constrain</span> ::=
+    PRIMARY KEY
+
+<span class="function-name">type</span> ::=
+    INTEGER
+  | TEXT
+
+<span class="function-name">identifier</span> ::=
+    delimited_identifier
+  | limited_identifier
+
+<span class="type">CREATE</span>  ~ <span class="string">'create'</span><span class="keyword">:i</span>
+<span class="type">INTEGER</span> ~ <span class="string">'integer'</span><span class="keyword">:i</span>
+<span class="type">KEY</span>     ~ <span class="string">'key'</span><span class="keyword">:i</span>
+<span class="type">PRIMARY</span> ~ <span class="string">'primary'</span><span class="keyword">:i</span>
+<span class="type">TABLE</span>   ~ <span class="string">'table'</span><span class="keyword">:i</span>
+<span class="type">TEXT</span>    ~ <span class="string">'text'</span><span class="keyword">:i</span>
+
+<span class="type">comma</span>                     ~ <span class="variable-name">[,]</span>
+<span class="type">double_quote</span>              ~ <span class="variable-name">["]</span>
+<span class="type">non_double_quotes</span>         ~ <span class="variable-name">[^"]</span>+
+<span class="type">limited_identifier_start</span>  ~ <span class="variable-name">[a-zA-Z_]</span>
+<span class="type">limited_identifier_extend</span> ~ <span class="variable-name">[a-zA-Z0-9_]</span>*
+
+<span class="type">delimited_identifier</span> ~ double_quote non_double_quotes double_quote
+<span class="type">limited_identifier</span>   ~ limited_identifier_start limited_identifier_extend
+
+<span class="builtin">:discard</span> ~ whitespace
+<span class="type">whitespace</span> ~ <span class="variable-name">[\s]</span>+
+</pre>
+  </body>
+</html>
