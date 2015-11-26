@@ -1,6 +1,6 @@
 ;;; marpa-mode.el --- Major mode for editing Marpa grammar files.
 
-;; Time-stamp: <2015-11-20 16:33:31 szi>
+;; Time-stamp: <2015-11-26 11:11:17 szi>
 ;;
 ;; Copyright (C) 2015  Sascha Ziemann
 ;;
@@ -63,7 +63,7 @@
      (1 font-lock-variable-name-face))
     (,(regexp-opt '(":default" ":discard" ":lexeme" ":start"))
      (0 font-lock-builtin-face))
-    ("^[ \t]*\\(\\sw+\\)[ \t]*::="
+    ("^[ \t]*\\(\\sw+\\|<[^>]+>\\)[ \t]*::="
      (1 font-lock-function-name-face))
     ("^[ \t]*\\(\\sw+\\)[ \t]*~"
      (1 font-lock-type-face))
@@ -76,6 +76,10 @@
                              "rank" "separator"
                              ;; Statements
                              "discard" "lexeme" "default" "inaccessible"
+                             ;; Reserved blessings
+                             "::undef" "::lhs" "::name"
+                             ;; Reserved actions
+                             "::array" "::first"
                              ))
                "\\>")
      (0 font-lock-keyword-face)))
@@ -94,10 +98,10 @@
   (interactive)
   (save-excursion
     (beginning-of-line)
-    (cond ((looking-at "^[ \t]*\\sw+[ \t]*\\(::=\\|~\\)\\|lexeme")
+    (cond ((looking-at "^[ \t]*\\(?:\\sw+\\|<[^>]+>\\)[ \t]*\\(::=\\|~\\)\\|lexeme")
            (if (equal "~" (match-string-no-properties 1))
                (let ((col (marpa-mode-tilde-column))
-                     (tre "^[ \t]*\\sw+[ \t]*\\(~\\)")
+                     (tre "^[ \t]*\\(?:\\sw+\\|<[^>]+>\\)[ \t]*\\(~\\)")
                      (c-1 0)
                      (c+1 0))
                  (save-excursion
